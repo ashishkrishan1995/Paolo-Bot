@@ -22,6 +22,10 @@ def submit(bot, update):
     """Submit your ICO"""
     update.message.reply_text('')
 
+def submit(bot, update):
+    """Survey Part"""
+    update.message.reply_text('Which ICO would you like on CryptoCompass ?')
+
     
 def echo(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
@@ -43,6 +47,7 @@ def main():
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("invest", invest))
     dp.add_handler(CommandHandler("submit", submit))
+    dp.add_handler(CommandHandler("survey", survey))
 
     # On non command message, echo the same message
     dp.add_handler(MessageHandler(Filters.text, echo))
