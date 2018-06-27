@@ -1,0 +1,6 @@
+
+Token : 501606167:AAES4zzMDx0955J19XL0GLN8DsEy2qUga4
+
+https://api.telegram.org/bot501606167:AAES4zzMDx0955J19XL0GLN8DsEy2qUga4/sendMessage
+
+{"chat_id":"@ashvetestingbot", "text":"{{Entry Title}}  {{Feedurl}}"}
