@@ -6,7 +6,7 @@ import logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-#All required command handlers
+# All required command handlers
 def start(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="Dear User, \n\nI'm the *CryptoCompass* bot. I can help you with the following.\n\n1. How to Invest?\n2. Current Deal\n3. Survey: Which ICO would you like on CryptoCompass\n4. Submit your ICO.", parse_mode='Markdown')
     
@@ -19,6 +19,9 @@ def invest(bot, update):
     """How to Invest ?"""
     bot.send_message(chat_id=update.message.chat_id, text="Become a member on [CryptoCompass](http://www.crypto-compass.io/)", parse_mode='Markdown')
     
+def bonus(bot, update):
+    """ICO extra bonus"""
+    bot.send_message(chat_id=update.message.chat_id, text="You need to login to [CryptoCompass](http://www.crypto-compass.io/) to see the bonus.", parse_mode='Markdown')
 
 def submit(bot, update):
     """Submit your ICO"""
@@ -48,6 +51,7 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("invest", invest))
+    dp.add_handler(CommandHandler("bonus", bonus))
     dp.add_handler(CommandHandler("submit", submit))
     dp.add_handler(CommandHandler("survey", survey))
 
