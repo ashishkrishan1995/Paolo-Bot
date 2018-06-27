@@ -8,7 +8,8 @@ logger = logging.getLogger(__name__)
 
 #All required command handlers
 def start(bot, update):
-    update.message.reply_text("Dear User, \nI'm the CryptoCompass bot. I can help you with the following.\n\n1. How to Invest?\n2. Current Deal\n3. Survey: Which ICO would you like on CryptoCompass\n4. Submit your ICO.")
+    bot.send_message(chat_id=update.message.chat_id, text="Dear User, \n\nI'm the *CryptoCompass* bot. I can help you with the following.\n\n1. How to Invest?\n2. Current Deal\n3. Survey: Which ICO would you like on CryptoCompass\n4. Submit your ICO.", parse_mode='Markdown')
+    
 
 def help(bot, update):
     """Send a message when the command /help is issued."""
@@ -16,13 +17,14 @@ def help(bot, update):
 
 def invest(bot, update):
     """How to Invest ?"""
-    update.message.reply_text('')
+    bot.send_message(chat_id=update.message.chat_id, text="Become a member on [CryptoCompass](http://www.crypto-compass.io/)", parse_mode='Markdown')
+    
 
 def submit(bot, update):
     """Submit your ICO"""
     update.message.reply_text('')
 
-def submit(bot, update):
+def survey(bot, update):
     """Survey Part"""
     update.message.reply_text('Which ICO would you like on CryptoCompass ?')
 
