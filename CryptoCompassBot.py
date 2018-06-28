@@ -10,17 +10,17 @@ logger = logging.getLogger(__name__)
 
 # All required command handlers
 def start(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text="Dear User, \n\nI'm the *CryptoCompass* bot. I can help you with the following.\n\n1. How to Invest?\n2. Current Deal\n3. Survey: Which ICO would you like on CryptoCompass\n4. Submit your ICO.", parse_mode='Markdown')
+    bot.send_message(chat_id=update.message.chat_id, text="Dear User, \n\nI'm the *CryptoCompass* bot. I can help you with the following.\n\n1. How to Invest ?\n2. Current Deals\n3. Survey: Which ICO would you like on CryptoCompass\n4. Submit your ICO\n5. Rules", parse_mode='Markdown')
     
 
 def help(bot, update):
     """Send a message when the command /help is issued."""
     user = update.message.from_user.first_name
-    update.message.reply_text('Hello {} looking for Help! \n/start - To start the bot \n/help - To get list of all commands \n/invest - To learn abour investment \n/bonus - To get the bonous deals\n/submit- To submit the ICO \n/survey - To do a survery on which ICO you want on cryptocompass \n/rules - TO view group rules and regulations'.format(user))
+    update.message.reply_text('Hello {} looking for Help! \n/start - To start the bot \n/help - To get list of all commands \n/currentdeals - To learn abour investment \n/bonus - To get the bonous deals\n/submit- To submit the ICO \n/survey - To do a survery on which ICO you want on cryptocompass \n/rules - To view group rules and regulations'.format(user))
 
 
-def invest(bot, update):
-    """How to Invest ?"""
+def currentdeals(bot, update):
+    """How to Invest ? (Current Deals)"""
     bot.send_message(chat_id=update.message.chat_id, text="Become a member on [CryptoCompass](http://www.crypto-compass.io/)", parse_mode='Markdown')
     
 def bonus(bot, update):
@@ -29,11 +29,11 @@ def bonus(bot, update):
 
 def submit(bot, update):
     """Submit your ICO"""
-    update.message.reply_text('')
+    bot.send_message(chat_id=update.message.chat_id, text="Please apply at the end of the homepage of [CryptoCompass](http://www.crypto-compass.io/)\n\nIn stage 1, our partner Blockpulse, a French compnay dedicated to ICO audit and investors relation will contact you if you have been selected to continue into stage 2 (due diligence) [Blockpulse](www.blockpulse.eu)", parse_mode='Markdown')
 
 def survey(bot, update):
     """Survey Part"""
-    update.message.reply_text('Which ICO would you like on CryptoCompass ?')
+    bot.send_message(chat_id=update.message.chat_id, text="Fill this [form](http://goo.gl/forms/sMqxDE8RLW2Qs1ab2) to let us know which ICO you would like to see on our platform.", parse_mode='Markdown')
 
 def about(bot,update):
     update.message.reply_text('This bot is made and hosted by @ashveservice \n Visit us at http://www.ashveservices.com)')
@@ -51,7 +51,7 @@ def error(bot, update, error):
 def main():
 
     # Event handler and pass token
-    updater = Updater(token='501606167:AAFSvnmbvbISIL09P4_slr8SsSO-VfFVHYU')
+    updater = Updater(token='619567191:AAH_JriBOC4Klqp7YYZqR-6_syOKdyfVZBY')
 
     # Dispatcher to register handlers
     dp = updater.dispatcher
@@ -59,7 +59,7 @@ def main():
     # Different commands
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
-    dp.add_handler(CommandHandler("invest", invest))
+    dp.add_handler(CommandHandler("currentdeals", currentdeals))
     dp.add_handler(CommandHandler("bonus", bonus))
     dp.add_handler(CommandHandler("submit", submit))
     dp.add_handler(CommandHandler("survey", survey))
