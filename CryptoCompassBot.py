@@ -1,5 +1,7 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-import logging
+import logging,telegram
+import emoji 
+from rules import st
 
 
 # Enable Logging
@@ -13,7 +15,9 @@ def start(bot, update):
 
 def help(bot, update):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('Help!')
+    user = update.message.from_user.first_name
+    update.message.reply_text('Hello {} looking for Help! \n/start - To start the bot \n/help - To get list of all commands \n/invest - To learn abour investment \n/bonus - To get the bonous deals\n/submit- To submit the ICO \n/survey - To do a survery on which ICO you want on cryptocompass \n/rules - TO view group rules and regulations'.format(user))
+
 
 def invest(bot, update):
     """How to Invest ?"""
@@ -31,6 +35,11 @@ def survey(bot, update):
     """Survey Part"""
     update.message.reply_text('Which ICO would you like on CryptoCompass ?')
 
+def about(bot,update):
+    update.message.reply_text('This bot is made and hosted by @ashveservice \n Visit us at http://www.ashveservices.com)')
+
+def rules(bot,update):
+    update.message.reply_text(st)
     
 def echo(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
@@ -54,6 +63,8 @@ def main():
     dp.add_handler(CommandHandler("bonus", bonus))
     dp.add_handler(CommandHandler("submit", submit))
     dp.add_handler(CommandHandler("survey", survey))
+    dp.add_handler(CommandHandler("about", about))
+    dp.add_handler(CommandHandler("Rules", rules))
 
     # On non command message, echo the same message
     dp.add_handler(MessageHandler(Filters.text, echo))
