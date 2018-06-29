@@ -16,7 +16,7 @@ def start(bot, update):
 def help(bot, update):
     """Send a message when the command /help is issued."""
     user = update.message.from_user.first_name
-    update.message.reply_text('Hello {} looking for Help! \n/start - To start the bot \n/help - To get list of all commands \n/currentdeals - To learn abour investment \n/bonus - To get the bonous deals\n/submit- To submit the ICO \n/survey - To do a survery on which ICO you want on cryptocompass \n/rules - To view group rules and regulations'.format(user))
+    update.message.reply_text('Hello {} looking for Help! \n/start - To start the bot \n/help - To get list of all commands \n/currentdeals - To learn abour investment \n/bonus - To get the bonus deals\n/submit- To submit an ICO \n/survey - To do a survey on which ICO you want on cryptocompass \n/rules - To view group rules and regulations'.format(user))
 
 
 def currentdeals(bot, update):
