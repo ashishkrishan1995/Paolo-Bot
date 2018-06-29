@@ -29,7 +29,7 @@ def bonus(bot, update):
 
 def submit(bot, update):
     """Submit your ICO"""
-    bot.send_message(chat_id=update.message.chat_id, text="Please apply at the end of the homepage of [CryptoCompass](http://www.crypto-compass.io/)\n\nIn stage 1, our partner Blockpulse, a French compnay dedicated to ICO audit and investors relation will contact you if you have been selected to continue into stage 2 (due diligence) [Blockpulse](www.blockpulse.eu)", parse_mode='Markdown')
+    bot.send_message(chat_id=update.message.chat_id, text="Please apply at the end of the homepage of [CryptoCompass](http://www.crypto-compass.io/)\n\nIn stage 1, our partner Blockpulse, a French company dedicated to ICO audit and investors relation will contact you if you have been selected to continue into stage 2 (due diligence) [Blockpulse](www.blockpulse.eu)", parse_mode='Markdown')
 
 def survey(bot, update):
     """Survey Part"""
