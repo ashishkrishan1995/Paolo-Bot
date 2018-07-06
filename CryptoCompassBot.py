@@ -2,11 +2,23 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging,telegram
 import emoji 
 from rules import st
+import updater
 
 
 # Enable Logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+######
+
+
+bon="You need to login to [CryptoCompass](http://www.crypto-compass.io/) to see the bonus."
+#########
+
+def get_admin_ids(bot, chat_id):
+    """Returns a list of admin IDs for a given chat. Results are cached for 1 hour."""
+    return [admin.user.id for admin in bot.get_chat_administrators(chat_id)]
+        
 
 # All required command handlers
 def start(bot, update):
@@ -25,7 +37,8 @@ def currentdeals(bot, update):
     
 def bonus(bot, update):
     """ICO extra bonus"""
-    bot.send_message(chat_id=update.message.chat_id, text="You need to login to [CryptoCompass](http://www.crypto-compass.io/) to see the bonus.", parse_mode='Markdown')
+    
+    bot.send_message(chat_id=update.message.chat_id, text=updater.data(), parse_mode='Markdown')
 
 def submit(bot, update):
     """Submit your ICO"""
@@ -40,6 +53,11 @@ def about(bot,update):
 
 def rules(bot,update):
     update.message.reply_text(st)
+
+def edit(bot,update):
+    print(update.message.text)
+
+        
     
 def echo(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
@@ -52,7 +70,6 @@ def main():
 
     # Event handler and pass token
     updater = Updater(token='619567191:AAH_JriBOC4Klqp7YYZqR-6_syOKdyfVZBY')
-
     # Dispatcher to register handlers
     dp = updater.dispatcher
 
@@ -65,6 +82,7 @@ def main():
     dp.add_handler(CommandHandler("survey", survey))
     dp.add_handler(CommandHandler("about", about))
     dp.add_handler(CommandHandler("Rules", rules))
+    dp.add_handler(CommandHandler("Edit", edit))
 
     # On non command message, echo the same message
     dp.add_handler(MessageHandler(Filters.text, echo))
