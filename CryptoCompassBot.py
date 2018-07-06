@@ -33,7 +33,7 @@ def help(bot, update):
 
 def currentdeals(bot, update):
     """How to Invest ? (Current Deals)"""
-    bot.send_message(chat_id=update.message.chat_id, text="We have several ICOs in private sale. We share our due diligence reports on our website for free.  If you want other private sales and due diligence reports, feel free to complete /n /survey", parse_mode='Markdown')
+    bot.send_message(chat_id=update.message.chat_id, text="We have several ICOs in private sale. We share our due diligence reports on our website for free.  If you want other private sales and due diligence reports, feel free to complete. /survey", parse_mode='Markdown')
     
 def bonus(bot, update):
     """ICO extra bonus"""
